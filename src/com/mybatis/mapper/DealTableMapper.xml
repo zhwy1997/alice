@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.DAO.DealTableDAO">	
+	
+	<!-- 查询所有成交商品信息 -->
+	<select id="selectAllDealTable"  resultType="com.mybatis.po.DealTable">
+		select * from selectDealTable
+	</select>
+	
+	<!-- 查询成交商品信息根据Gid -->
+	<select id="selectDealTableByGid" parameterType="Integer" resultType="com.mybatis.po.DealTable">
+		select * from DealTable where gid = #{gid}
+	</select>
+	
+	
+	<!-- 添加一个成交品-->
+	<insert id="addDealTable" parameterType="com.mybatis.po.DealTable">
+		insert into BuyGoods (gid,sellUsr,buyUsr) 
+		values(#{gid},#{sellUsr},#{buyUsr})
+	</insert>
+	
+	<!-- 删除一个成交商品明细 不可使用的需求-->
+	<delete id="deleteDealTable" parameterType="Integer"> 
+		delete from DealTable where gid = #{gid}
+	</delete>
+</mapper>

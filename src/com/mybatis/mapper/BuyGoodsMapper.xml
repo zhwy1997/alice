@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.DAO.BuyGoodsDAO">	
+	<!-- 根据belongUsr所属用户 查询一个用户下所有求购的商品信息 -->
+	<select id="selectBuyGoodsByUsr" parameterType="Integer" 
+		resultType="com.mybatis.po.BuyGoods">
+		select * from BuyGoods where belongUsr = #{belongUsr}
+	</select>
+	
+	<!-- 查询所有贩卖商品信息 -->
+	<select id="selectAllBuyGoods"  resultType="com.mybatis.po.BuyGoods">
+		select * from BuyGoods
+	</select>
+	
+	<!-- 查询求购商品信息根据Gid -->
+	<select id="selectBuyGoodsByGid" parameterType="Integer" resultType="com.mybatis.po.BuyGoods">
+		select * from BuyGoods where gid = #{gid}
+	</select>
+	
+	
+	<!-- 查询满足物品类型、物品名称、价格区间条件的商品信息 -->
+	<select id="selectBuyGoods"  parameterType="com.mybatis.pojo.BuyGoodsParam" 
+	resultType="com.mybatis.po.BuyGoods">
+		select * from BuyGoods 
+		where  goodName like concat('%',#{good_Name},'%') 
+		and  minPrice&gt;=#{min_Price}
+		and  maxPrice&lt;=#{max_Price}
+		<if test="_parameter.good_Type!=null">  
+			and goodType=#{good_Type}
+		</if>
+	</select>
+	
+	<!-- 添加一个贩卖品-->
+	<insert id="addBuyGoods" parameterType="com.mybatis.po.BuyGoods">
+		insert into BuyGoods (belongUsr,goodType,goodName,minPrice,fixedPrice,goodDescription,goodIMG) 
+		values(#{belongUsr},#{goodType},#{goodName},#{minPrice},#{fixedPrice},#{goodDescription},#{goodIMG})
+	</insert>
+	
+	<!-- 修改一个商品的成交状态-->
+	<update id="updateSellGoodsEnd" parameterType="com.mybatis.po.SellGoods">
+		update BuyGoods set sellState=#{sellState} where gid = #{gid}
+	</update>
+	<!-- 修改一个求购商品的基本信息-->
+	<update id="updateBuyGoods" parameterType="com.mybatis.po.BuyGoods">
+		update BuyGoods set goodType=#{goodType},goodName=#{goodName},
+			minPrice=#{minPrice},maxPrice=#{maxPrice},goodDescription=#{goodDescription},
+			goodIMG=#{goodIMG} where gid = #{gid}
+	</update>
+	<!-- 删除一个求购商品 -->
+	<delete id="deleteBuyGoods" parameterType="Integer"> 
+		delete from BuyGoods where gid = #{gid}
+	</delete>
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.DAO.SellGoodsDAO">	
+	<!-- 根据belongUsr所属用户 查询一个用户下所有贩卖的商品信息 -->
+	<select id="selectSellGoodsByUsr" parameterType="Integer" 
+		resultType="com.mybatis.po.SellGoods">
+		select * from SellGoods where belongUsr = #{belongUsr}
+	</select>
+	
+	<!-- 查询所有贩卖商品信息 -->
+	<select id="selectAllSellGoods"  resultType="com.mybatis.po.SellGoods">
+		select * from SellGoods
+	</select>
+	
+	<!-- 查询贩卖商品信息根据Gid -->
+	<select id="selectSellGoodsByGid" parameterType="Integer" resultType="com.mybatis.po.SellGoods">
+		select * from SellGoods where gid = #{gid}
+	</select>
+	
+	<!-- 查询满足物品类型、物品名称、价格区间条件的商品信息 -->
+	<select id="selectSellGoods"  parameterType="com.mybatis.pojo.SellGoodsParam" 
+	resultType="com.mybatis.po.SellGoods">
+		select * from SellGoods 
+		where  goodName like concat('%',#{good_Name},'%') 
+		and  minPrice&gt;=#{min_Price}
+		and  minPrice&lt;=#{max_Price}
+		<if test="_parameter.good_Type!=null">  
+			and goodType=#{good_Type}
+		</if>
+	</select>
+	
+	<!-- 添加一个贩卖品，#{ }com.mybatis.po.SellGoods的属性值-->
+	<insert id="addSellGoods" parameterType="com.mybatis.po.SellGoods">
+		insert into SellGoods (belongUsr,goodType,goodName,minPrice,fixedPrice,goodDescription,goodIMG) 
+		values(#{belongUsr},#{goodType},#{goodName},#{minPrice},#{fixedPrice},#{goodDescription},#{goodIMG})
+	</insert>
+	<!-- 修改一个商品的竞价结束日期与竞价结束状态-->
+	<update id="updateSellGoodsEnd" parameterType="com.mybatis.po.SellGoods">
+		update SellGoods set endAuctionTime = #{endAuctionTime},sellState=#{sellState} where gid = #{gid}
+	</update>
+	<!-- 修改一个商品的竞价状态-->
+		<update id="updateSellGoodsOfState" parameterType="com.mybatis.po.SellGoods">
+		update SellGoods set sellState=#{sellState} where gid = #{gid}
+	</update>
+	
+	
+	<!-- 修改一个商品的基本信息-->
+	<update id="updateSellGoods" parameterType="com.mybatis.po.SellGoods">
+		update SellGoods set goodType=#{goodType},goodName=#{goodName},
+			minPrice=#{minPrice},fixedPrice=#{fixedPrice},goodDescription=#{goodDescription},
+			goodIMG=#{goodIMG} where gid = #{gid}
+	</update>
+	<!-- 删除一个商品 -->
+	<delete id="deleteSellGoods" parameterType="Integer"> 
+		delete from SellGoods where gid = #{gid}
+	</delete>
+</mapper>

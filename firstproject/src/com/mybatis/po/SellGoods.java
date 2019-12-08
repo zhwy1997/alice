@@ -4,8 +4,11 @@ import java.util.*;
  *数据库中SellGood表的持久化类
  */
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.*;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SellGoods {
 	private Integer gid;
 	private Integer belongUsr;

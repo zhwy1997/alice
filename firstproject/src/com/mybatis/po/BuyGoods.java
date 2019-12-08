@@ -5,6 +5,8 @@ package com.mybatis.po;
 import java.io.InputStream;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BuyGoods {
 	private Integer gid;
 	private Integer belongUsr;

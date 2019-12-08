@@ -25,6 +25,9 @@ public interface UsrService {
 		 * @return 查询结果
 		 */
 		MyUsr usrInfo(MyUsr user);
+		/**查询所有用户
+		 * @return 用户信息列表
+		 */
 		List<MyUsr> allUsrInfo();
 
 }

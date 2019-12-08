@@ -1,8 +1,11 @@
 package com.mybatis.po;
 import java.util.*;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 /**
  *数据库中DealTable表的持久化类
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DealTable {
 	private Integer gid;
 	private Integer sellUsr;

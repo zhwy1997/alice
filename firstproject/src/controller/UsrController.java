@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mybatis.po.MyUsr;
 import com.mybatis.pojo.UsrMessage;
+
 import service.interfaces.UsrService;
 
 @Controller
@@ -20,7 +20,8 @@ public class UsrController {
 	@Autowired
 	private UsrService usrService;
 
-	@RequestMapping("/login")
+	
+	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public 	@ResponseBody UsrMessage login (@RequestBody MyUsr usr) {
 		System.out.println("登录");	
 		MyUsr result=usrService.login(usr);
@@ -63,7 +64,7 @@ public class UsrController {
 	}
 
 	@RequestMapping("/modify") 
-	public @ResponseBody  UsrMessage modify(@RequestBody MyUsr usr) {
+	public @ResponseBody UsrMessage modify(@RequestBody MyUsr usr) {
 		System.out.println("修改基本信息");
 		MyUsr result=usrService.modify(usr);
 		UsrMessage response = new UsrMessage();
@@ -81,7 +82,7 @@ public class UsrController {
 
 	@RequestMapping("/info")
 	public @ResponseBody UsrMessage usrInfo(@RequestBody MyUsr usr) {
-		MyUsr result = usrService.usrInfo(usr);
+		MyUsr result = usrService.usrInfo(usr.getUid());
 		UsrMessage response = new UsrMessage();
 		if (result==null) {
 			response.setMyUsr(result);
@@ -95,22 +96,23 @@ public class UsrController {
 		return response;
 	}
 	
-	@RequestMapping(value="/allinfo",method=RequestMethod.POST)
-	public @ResponseBody UsrMessage allUsrInfo() {
-		List <MyUsr> result = usrService.allUsrInfo();
+	//充值
+	@RequestMapping("/recharge")
+	public @ResponseBody UsrMessage recharge(@RequestBody MyUsr usr) {
+		MyUsr result = usrService.recharge(usr.getUid(),usr.getBalance(), 0);
 		UsrMessage response = new UsrMessage();
 		if (result==null) {
-			response.setUsrList(result);
-			response.setMessage("无用户列表");
-			response.setMessageCode("00");
-			
-		} else {
-			response.setUsrList(result);
-			response.setMessage("查询成功");
+			response.setMyUsr(result);
+			response.setMessage("充值成功");
 			response.setMessageCode("10");
+		} else {
+			response.setMyUsr(result);
+			response.setMessage("充值失败");
+			response.setMessageCode("00");
 		}
-			
 		return response;
-		
 	}
+
+
+
 }

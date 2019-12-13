@@ -6,19 +6,19 @@ import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import java.io.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SellGoods {
 	private Integer gid;
 	private Integer belongUsr;
+	private Integer buyUsr;
 	private String 	goodType;
 	private String 	goodName;
 	private Double	minPrice;
 	private Integer fixedPrice; 
 	private Date 	endAuctionTime;
 	private String 	goodDescription;
-	private InputStream goodIMG;
+	private String goodIMG;
 	private Date 	createTime;
 	private Date 	modifyTime;
 	private String 	sellState;
@@ -33,6 +33,12 @@ public class SellGoods {
 	}
 	public void setBelongUsr(Integer belongUsr) {
 		this.belongUsr = belongUsr;
+	}
+	public Integer getBuyUsr() {
+		return buyUsr;
+	}
+	public void setBuyUsr(Integer buyUsr) {
+		this.buyUsr = buyUsr;
 	}
 	public String getGoodType() {
 		return goodType;
@@ -73,10 +79,10 @@ public class SellGoods {
 	public void setGoodDescription(String goodDescription) {
 		this.goodDescription = goodDescription;
 	}
-	public InputStream getGoodIMG() {
+	public String getGoodIMG() {
 		return goodIMG;
 	}
-	public void setGoodIMG(InputStream goodIMG) {
+	public void setGoodIMG(String goodIMG) {
 		this.goodIMG = goodIMG;
 	}
 	public Date getCreateTime() {

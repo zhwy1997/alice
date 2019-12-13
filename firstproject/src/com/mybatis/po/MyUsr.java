@@ -10,10 +10,12 @@ public class MyUsr {
 	private Integer uid;//Ö÷¼ü
 	private String uAccount;
 	private String password;
-	private String uType;
+	private  double consumption;
+	private double balance; 
+	//	private String uType;
 	private String uName;
 	private String phoneNumber;
-	private String ulevel;
+	private Integer ulevel;
 	private String city;
 	private Date   regTime;
 	private Date   modifyTime;
@@ -27,16 +29,17 @@ public class MyUsr {
 	public String getPassword() {
 		return password;
 	}
-	public String getuType() {
-		return uType;
-	}
+
+	/*
+	 * public String getuType() { return uType; }
+	 */
 	public String getuName() {
 		return uName;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public String getUlevel() {
+	public Integer getUlevel() {
 		return ulevel;
 	}
 	public String getCity() {
@@ -48,6 +51,18 @@ public class MyUsr {
 	public Date getModifyTime() {
 		return modifyTime;
 	}
+	public double getConsumption() {
+		return consumption;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setConsumption(double consumption) {
+		this.consumption = consumption;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
 	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
@@ -57,16 +72,17 @@ public class MyUsr {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public void setuType(String uType) {
-		this.uType = uType;
-	}
+
+	/*
+	 * public void setuType(String uType) { this.uType = uType; }
+	 */
 	public void setuName(String uName) {
 		this.uName = uName;
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public void setUlevel(String ulevel) {
+	public void setUlevel(Integer ulevel) {
 		this.ulevel = ulevel;
 	}
 	public void setCity(String city) {

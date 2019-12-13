@@ -9,6 +9,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from BuyGoods where belongUsr = #{belongUsr}
 	</select>
 	
+	<!-- 根据belongUsr所属用户 查询一个用户下新添加的求购商品信息(gid最大) -->
+	<select id="selectLatestBuyGoodsByUsr" parameterType="Integer" 
+		resultType="com.mybatis.po.BuyGoods">
+		select * from BuyGoods
+		where gid=(
+			select Max(gid) as gid
+			from BuyGoods
+			where belongUsr = #{belongUsr}
+		)
+	</select>
+	
+	
 	<!-- 查询所有贩卖商品信息 -->
 	<select id="selectAllBuyGoods"  resultType="com.mybatis.po.BuyGoods">
 		select * from BuyGoods

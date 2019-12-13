@@ -14,11 +14,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from DealTable where gid = #{gid}
 	</select>
 	
+	<!-- 查询某用户所有成交贩卖品订单 -->
+	<select id="selectDealTableByUsrSell" parameterType="Integer" resultType="com.mybatis.po.DealTable">
+		select * from DealTable where sellUsr = #{sellUsr}
+	</select>
+	
+	<!-- 查询某用户所有成交购买订单 -->
+	<select id="selectDealTableByUsrBuy" parameterType="Integer" resultType="com.mybatis.po.DealTable">
+		select * from DealTable where buyUsr = #{buyUsr}
+	</select>
+	
 	
 	<!-- 添加一个成交品-->
 	<insert id="addDealTable" parameterType="com.mybatis.po.DealTable">
-		insert into BuyGoods (gid,sellUsr,buyUsr) 
-		values(#{gid},#{sellUsr},#{buyUsr})
+		insert into BuyGoods (gid,sellUsr,buyUsr,dealPrice) 
+		values(#{gid},#{sellUsr},#{buyUsr},#{dealPrice})
 	</insert>
 	
 	<!-- 删除一个成交商品明细 不可使用的需求-->

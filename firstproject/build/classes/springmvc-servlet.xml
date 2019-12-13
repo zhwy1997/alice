@@ -24,15 +24,15 @@
     
     
         <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
-    <bean id="mappingJackson2HttpMessageConverter"
-        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-        <property name="supportedMediaTypes">
-            <list>
-                <value>text/html;charset=UTF-8</value>
-            </list>
-        </property>
-    </bean>
 
+    	<bean id="mappingJackson2HttpMessageConverter"
+        	class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        	<property name="supportedMediaTypes">
+            	<list>
+	                <value>text/html;charset=UTF-8</value>
+	            </list>
+	        </property>
+	    </bean>
     <!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
     <bean
         class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
@@ -47,7 +47,7 @@
     如果不使用resources，则annotation-driven可以没有。 -->  
   	 <!-- 配置静态资源，允许js目录下所有文件可见 -->
   	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
-  	
+  	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
   	<!-- 配置视图解析器 -->
   	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
             id="internalResourceViewResolver">
@@ -56,4 +56,15 @@
        <!-- 后缀 -->
        <property name="suffix" value=".jsp" />
   </bean>
+  
+  	<!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="defaultEncoding" value="UTF-8"  ></property>
+        <property name="maxUploadSize" value="20971520"  ></property>
+        <property name="uploadTempDir" value="fileUpload/temp"></property> 
+        <property name="resolveLazily" value="true"></property>
+       
+        <!-- 20M 启用延迟加载-->
+    </bean> 
+  
 </beans>

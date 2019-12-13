@@ -52,7 +52,6 @@ public class SellGoodstest {
 				  System.out.println(goods); 
 				  }
 		
-		
 		//提交事务
 		sqlSession.commit();
 		//关闭SQL

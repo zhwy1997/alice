@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.DAO.MyUsrDAO">
+	<!-- 根据uid用户标识查询一个用户信息 -->
+	<select id="selectUserByuid" parameterType="Integer" 
+		resultType="com.mybatis.po.AdminUsr">
+		select * from adminUsr where uid = #{uid}
+	</select>
+		
+	<!-- 根据uAccount用户名查询一个用户信息 -->
+	<select id="selectUserByuAccount" parameterType="String" 
+		resultType="com.mybatis.po.AdminUsr">
+		select * from adminUsr where uAccount = #{uAccount}
+	</select>
+</mapper>

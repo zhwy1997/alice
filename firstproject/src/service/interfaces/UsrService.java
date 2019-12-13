@@ -1,6 +1,5 @@
 package service.interfaces;
 import com.mybatis.po.MyUsr;
-import java.util.List;
 public interface UsrService {
 
 		/**登录
@@ -24,10 +23,18 @@ public interface UsrService {
 		 * @param user 使用ID查询
 		 * @return 查询结果
 		 */
-		MyUsr usrInfo(MyUsr user);
-		/**查询所有用户
-		 * @return 用户信息列表
+		MyUsr usrInfo(int uid);
+		
+		/** 充值或获得收益
+		 * @param userid&收益 ，中介费
+		 * @return 该用户明细
 		 */
-		List<MyUsr> allUsrInfo();
+		MyUsr recharge(int uid,double balance,double agencyFee);
+		
+		/** 付款
+		 * @param userid&付款金额,中介费
+		 * @return 该用户明细
+		 */
+		MyUsr pay(int uid,double balance,double agencyFee);
 
 }

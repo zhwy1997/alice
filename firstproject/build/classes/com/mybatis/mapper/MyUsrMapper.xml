@@ -22,12 +22,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 添加一个新用户 ，#{uname}为com.mybatis.po.MyUsr的属性值-->
 	<insert id="addUser" parameterType="com.mybatis.po.MyUsr">
-		insert into MyUsr (uAccount,password,uName,phoneNumber}) values(#{uAccount},#{password},#{uName},#{phoneNumber})
+		insert into MyUsr (uAccount,password,uName,phoneNumber) values(#{uAccount},#{password},#{uName},#{phoneNumber})
 	</insert>
 	
 	<!-- 修改一个用户 的手机号码与密码-->
 	<update id="updateUser" parameterType="com.mybatis.po.MyUsr">
 		update MyUsr set phoneNumber = #{phoneNumber},password = #{password} where uid = #{uid}
+	</update>
+	
+	<!-- 修改一个用户的余额 充值或出售收益-->
+	<update id="updateUserBalance" parameterType="com.mybatis.po.MyUsr">
+		update MyUsr set balance =balance + #{balance}where uid = #{uid}
+	</update>
+	
+	<!-- 修改一个用户的消费额度与等级-->
+	<update id="updateUserConsumption" parameterType="com.mybatis.po.MyUsr">
+		update MyUsr set consumption =consumption + #{consumption} where uid = #{uid};
+		update MyUsr set ulevel = (select Max(id) from level where uplevel &lt;= consumption) where uid = #{uid};
 	</update>
 	
 </mapper>

@@ -25,5 +25,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mapper resource="com/mybatis/mapper/BuyGoodsMapper.xml"/>
 	<mapper resource="com/mybatis/mapper/DealTableMapper.xml"/>
 	<mapper resource="com/mybatis/mapper/AgencyTableMapper.xml"/>
+	<mapper resource="com/mybatis/mapper/AdminUsr.xml"/>
 	</mappers>
 </configuration>

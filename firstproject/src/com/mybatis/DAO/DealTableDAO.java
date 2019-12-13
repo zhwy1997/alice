@@ -13,5 +13,7 @@ public interface DealTableDAO {
 	public List <DealTable> selectAllDealTable();
 	public DealTable selectDealTableByGid(Integer gid);
 	public int addDealTable(DealTable dealTable);
+	public List <DealTable> selectDealTableByUsrSell(Integer sellUsr);
+	public List <DealTable> selectDealTableByUsrBuy(Integer buyUsr);
 	public int deleteDealTable(Integer gid);
 }

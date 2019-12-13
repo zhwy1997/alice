@@ -19,4 +19,6 @@ public interface MyUsrDAO {
 	public List<MyUsr> selectAllUser ();
 	public int addUser (MyUsr usr);
 	public int updateUser (MyUsr usr);
+	public int updateUserBalance (MyUsr usr);
+	public int updateUserConsumption (MyUsr usr);
 }

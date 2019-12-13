@@ -1,5 +1,4 @@
 package service.impl;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,16 +51,42 @@ public class UsrServiceImpl implements UsrService {
 	}
 
 	@Override
-	public MyUsr usrInfo(MyUsr user) {
+	public MyUsr usrInfo(int uid) {
 		// TODO Auto-generated method stub
-		MyUsr result = myUsrDAO.selectUserByuid(user.getUid());
+		MyUsr result = myUsrDAO.selectUserByuid(uid);
 			return result;
 	}
 
 	@Override
-	public List<MyUsr> allUsrInfo() {
+	public MyUsr recharge(int uid,double balance,double agencyFee) {
 		// TODO Auto-generated method stub
-		List<MyUsr> result = myUsrDAO.selectAllUser();
-		return result;
+		MyUsr user  = new MyUsr();
+		user.setUid(uid);
+		user.setBalance(balance-agencyFee);
+		int flag = myUsrDAO.updateUserBalance(user);
+		if(flag==1) {
+			MyUsr result=myUsrDAO.selectUserByuid(user.getUid());	//获取新对象
+			return result;
+		} else {
+			return null;
+		}
 	}
+
+	@Override
+	public MyUsr pay(int uid,double balance,double agencyFee) {
+		// TODO Auto-generated method stub
+		MyUsr user  = new MyUsr();
+		user.setUid(uid);
+		user.setBalance(balance);
+		int flag1 =  myUsrDAO.updateUserConsumption(user);//增加累计消费
+		user.setBalance(-balance-agencyFee);//置收益为负数
+		int flag2 =  myUsrDAO.updateUserBalance(user); //扣款
+		if(flag1!=0&&flag2!=0) {
+			MyUsr result=myUsrDAO.selectUserByuid(user.getUid());	//获取新对象
+			return result;
+		} else {
+			return null;
+		}
+	}
+
 }

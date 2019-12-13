@@ -9,6 +9,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from SellGoods where belongUsr = #{belongUsr}
 	</select>
 	
+	<!-- 根据belongUsr所属用户 查询一个用户下新添加的贩卖商品信息(gid最大) -->
+	<select id="selectLatestSellGoodsByUsr" parameterType="Integer" 
+		resultType="com.mybatis.po.SellGoods">
+		select * from SellGoods 
+		where gid=(
+			select Max(gid) as gid
+			from SellGoods
+			where belongUsr = #{belongUsr}
+		)
+	</select>
+
+
+
 	<!-- 查询所有贩卖商品信息 -->
 	<select id="selectAllSellGoods"  resultType="com.mybatis.po.SellGoods">
 		select * from SellGoods
@@ -38,19 +51,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<!-- 修改一个商品的竞价结束日期与竞价结束状态-->
 	<update id="updateSellGoodsEnd" parameterType="com.mybatis.po.SellGoods">
-		update SellGoods set endAuctionTime = #{endAuctionTime},sellState=#{sellState} where gid = #{gid}
+		update SellGoods set endAuctionTime = #{endAuctionTime},sellState="已售" where gid = #{gid}
 	</update>
 	<!-- 修改一个商品的竞价状态-->
-		<update id="updateSellGoodsOfState" parameterType="com.mybatis.po.SellGoods">
+<!-- 	<update id="updateSellGoodsOfState" parameterType="com.mybatis.po.SellGoods">
 		update SellGoods set sellState=#{sellState} where gid = #{gid}
+	</update> -->
+	
+		<!-- 竞拍 修改一个商品的竞拍价格并进入竞拍模式-->
+	<update id="updateSellGoodsOfPrice" parameterType="com.mybatis.po.SellGoods">
+		update SellGoods set minPrice=#{minPrice},sellState="竞价中" where gid = #{gid}
 	</update>
+	
 	
 	
 	<!-- 修改一个商品的基本信息-->
 	<update id="updateSellGoods" parameterType="com.mybatis.po.SellGoods">
 		update SellGoods set goodType=#{goodType},goodName=#{goodName},
 			minPrice=#{minPrice},fixedPrice=#{fixedPrice},goodDescription=#{goodDescription},
-			goodIMG=#{goodIMG} where gid = #{gid}
+			goodIMG=#{goodIMG},sellState="待售" where gid = #{gid}
 	</update>
 	<!-- 删除一个商品 -->
 	<delete id="deleteSellGoods" parameterType="Integer"> 

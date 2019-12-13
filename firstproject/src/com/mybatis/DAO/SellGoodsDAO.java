@@ -11,14 +11,15 @@ import com.mybatis.pojo.SellGoodsParam;;
 /*使用Spring自动扫描MyBatis的接口并装配
 （Spring将指定包中所有被@Mapper注解标注的接口自动装配为MyBatis的映射接口*/
 public interface SellGoodsDAO {
-	public SellGoods selectSellGoodsByUsr(Integer belongUsr);
+	public List<SellGoods> selectSellGoodsByUsr(Integer belongUsr);
 	public List<SellGoods>  selectAllSellGoods();
 	public SellGoods selectSellGoodsByGid(Integer gid);
 	public List<SellGoods> selectSellGoods(SellGoodsParam param);
 	public int addSellGoods(SellGoods sellGoods);
 	public int updateSellGoodsEnd(SellGoods sellGoods);
-	public int updateSellGoodsOfState(SellGoods sellGoods);
+	//public int updateSellGoodsOfState(SellGoods sellGoods);
 	public int updateSellGoods(SellGoods sellGoods);
+	public int updateSellGoodsOfPrice(SellGoods sellGoods);
 	public int deleteSellGoods(Integer gid);
-	
+	public SellGoods selectLatestSellGoodsByUsr(Integer belongUsr);
 }	

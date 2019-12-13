@@ -2,7 +2,7 @@ package com.mybatis.po;
 /**
  *数据库中BuyGood表的持久化类
  */
-import java.io.InputStream;
+
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -19,7 +19,7 @@ public class BuyGoods {
 	private Date 	createTime;
 	private Date 	modifyTime;
 	private String 	sellState;
-	private InputStream goodIMG;
+	private String goodIMG;
 	public void setMinPrice(Double minPrice) {
 		this.minPrice = minPrice;
 	}
@@ -86,10 +86,10 @@ public class BuyGoods {
 	public void setSellState(String sellState) {
 		this.sellState = sellState;
 	}
-	public InputStream getGoodIMG() {
+	public String getGoodIMG() {
 		return goodIMG;
 	}
-	public void setGoodIMG(InputStream goodIMG) {
+	public void setGoodIMG(String goodIMG) {
 		this.goodIMG = goodIMG;
 	}
 	@Override

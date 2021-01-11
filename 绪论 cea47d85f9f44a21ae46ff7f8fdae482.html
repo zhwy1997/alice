@@ -1,0 +1,637 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>绪论</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b1354889-7c6c-4830-9a85-26db6e6f2ff2" class="page sans"><header><h1 class="page-title">绪论</h1></header><div class="page-body"><p id="02608e89-404a-4546-876e-4bd0579f0d34" class="">
+</p><nav id="08314723-d9da-493f-bd17-f8cef32a10c5" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7b7a9008-47e8-4b1e-bfc7-4f241797c7e6">第一节 现代汉语概说</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f950a5f4-26b9-4330-a507-21cac3429491">一、什么是现代汉语</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c6b3d9e9-04bc-4dd2-b5bd-06ca896253b0">二、现代汉民族共同语</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0da9213e-c774-4447-8764-a006d3ca8479">三、现代汉语方言</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#06bb516c-1a06-4893-9ff6-52a7954171e7">四、现代汉语特点</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3ca826b7-7376-415e-969f-5b9aed770f59">五、汉语的地位</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dfcde5c7-edf2-44fb-adc4-b996014211a5">第二节 汉语规范化和推广普通话</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a4aff1cb-3824-42da-900c-7e3bef757655">一、国家重视语言文字工作</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7db20c47-a447-4f18-a8dd-a3f8dc4107e9">二、现代汉语规范化</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eb6a08de-1f43-48ea-8c2d-5c7bc3d59d11">三、推广普通话</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#40588c35-2ad8-45a0-9630-3f93858753ae">第三节 现代汉语 课的性质、任务和内容</a></div></nav><p id="244e645d-3547-4b01-8b0c-98033ca61d53" class="">
+</p><h2 id="7b7a9008-47e8-4b1e-bfc7-4f241797c7e6" class="">第一节 现代汉语概说</h2><h3 id="f950a5f4-26b9-4330-a507-21cac3429491" class="">一、什么是现代汉语</h3><blockquote id="c7c3032f-2198-476b-ba9a-9be180e712d1" class="">       现代汉民族共同语是以北京语音为标准音，以北方话为基础方言，以典范的现代白话文著作为语法规范的普通话。</blockquote><p id="1059b7f1-694d-4c4b-b770-e0f69e8e14d7" class="">        普通话是现代汉民族的交际工具，也是国家法定的全国通用语言。少数民族聚集地区，仍然可以使用本民族语言、普通话、当地方言等语言。<mark class="highlight-pink">推广普通话，不是为了消灭语言，是为了消除沟通障碍。</mark></p><p id="12356281-fe57-48c8-9942-0f0997b657e5" class="">        汉语是一种语言，具有所有语言的共同属性：语音为物质外壳，以词汇为材料，以语法为结构规律而构成的一种音义结合的符号系统。</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e3b59c06-0684-47b4-beac-3c61c09f6e1f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">语音、词汇、语法 也被称为语言的三要素</div></figure><p id="1ee70a3b-3db3-47a5-80df-b3fbc58e4a29" class="">从功能上，语言体现了如下三种功能：</p><ol id="cfd2d4b8-7f62-4b1c-9170-cfb78a4316ff" class="numbered-list" start="1"><li>人与人的关系</li></ol><ol id="d17b47f8-d159-4238-be4a-2825ddd70ffa" class="numbered-list" start="2"><li>人与客观世界的关系</li></ol><ol id="4da421ac-6738-4a20-b86d-317ee46fbc7e" class="numbered-list" start="3"><li>人与文化的关系</li></ol><p id="93a8b6b9-02f2-4fcb-a44a-a36ce13ec007" class="">
+</p><p id="0f1b9fbb-40db-4ae8-9582-370e5947be1d" class="">        现代汉语分为口语和书面语，口语常常简短、疏放、有省略，这是<mark class="highlight-pink">因为当面交谈时，有特定的语境衬托，又有身手姿态和语音变化的辅助。</mark>同时口语易受到时空限制，故而有书面语记录。</p><p id="57acdbf3-90ce-45e5-bc91-1ac737f3a9ba" class="">
+</p><p id="6ae51625-ef25-46dd-ab52-a67d66d361ca" class="">       文学语言，又称为标准语，是经过高度加工并符合规范的语言，比一般的书面语更具有表达力。同时又囊括了书面语和口语，如答记者问、朗诵。作为标准语，文学语言以其典范性特征区别与一般的书面语和口语，对于现代汉民族语言的健康发展起着很大的示范和推动作用。</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f4e742c2-000b-4735-a66f-0a7a56670b5c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">本段对文学语言的描述，不知何意</div></figure><h3 id="c6b3d9e9-04bc-4dd2-b5bd-06ca896253b0" class="">二、现代汉民族共同语</h3><p id="26596729-cc59-4181-8ea9-9a9f0cf281f4" class="">       民族共同语是一个民族全体成员通用的语言，方言是局部地区人们使用的语言。有些方言是形成共同语的基础，在共同语形成后，方言仍可共存。</p><p id="70cf82b4-4a41-4822-9f85-87f5974d6f61" class="">       民族共同语是在一种方言的基础上形成的，作为民族共同语基础的方言就叫做<mark class="highlight-red"><strong>基础方言</strong></mark>。能否成为基础方言，取决于方言区的地位（政治、经济、文化）。</p><p id="733e9b49-88c6-485f-9c52-b145a04f3a2d" class="">       历史上早有民族共同语，雅言、官话、通语等。口语发展迅速，书面语逐渐脱离了口语，这种书面语被称为<strong>文言</strong>或<strong>文言文</strong>。而一种接近口语的书面语在唐宋时期诞生了，被称为<strong>白话</strong>。<div class="indented"><p id="a0f5583d-c7cf-4b73-8fdd-a6091fc7f0ab" class="">白话文运动、国语运动互相影响，使书面语和口语接近起来，形成了现代汉民族共同语。</p></div></p><p id="efb27e03-5402-4a2a-8dac-9bbbb60147ff" class="">      1955年，正式确定“<strong>现代汉民族共同语是以北京语音为标准音，以北方话为基础方言，以典范的现代白话文著作为语法规范的普通话</strong>”。</p><h3 id="0da9213e-c774-4447-8764-a006d3ca8479" class="">三、现代汉语方言</h3><p id="15bc07d5-29e2-4096-8cc2-41a68523e489" class="">     只通行于局部地区。汉语方言可分为七大方言区。以图片和表格的形式呈现。<div class="indented"><p id="ca4281fd-9827-4c05-a46e-61ac70c2da0e" class=""><mark class="highlight-red">汉语方言间的差异性：语音&gt;词汇&gt;语法。</mark></p><p id="775d6c42-4727-4f45-8191-636af112682d" class="">其中普通话、客方言、粤方言、闽方言都随华侨传布海外。</p><div id="b00d4d86-6933-4dd4-9628-6594d1243d7e" class="collection-content"><h4 class="collection-title">现代汉语七大方言</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>名</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>地域分布</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>使用人数</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>说明</th></tr></thead><tbody><tr id="56f7dc63-4895-4c7c-8e32-22a9cc04bc64"><td class="cell-title"><a href="https://www.notion.so/56f7dc6348954c7c8e3222a9cc04bc64">北方方言</a></td><td class="cell-?|=c">华北、西北、西南、江淮等</td><td class="cell-eP~T">73%</td><td class="cell-muD}">北京话</td></tr><tr id="3dc0f424-2177-47df-b00f-9a8084295932"><td class="cell-title"><a href="https://www.notion.so/3dc0f424217747dfb00f9a8084295932">吴方言</a></td><td class="cell-?|=c">上海、江苏、浙江等</td><td class="cell-eP~T">7.2%</td><td class="cell-muD}">苏州话</td></tr><tr id="1bd378de-938c-4038-8962-09f8b0c36db4"><td class="cell-title"><a href="https://www.notion.so/1bd378de938c4038896209f8b0c36db4">湘方言</a></td><td class="cell-?|=c">湖南大部分地区</td><td class="cell-eP~T">3.2%</td><td class="cell-muD}">长沙话</td></tr><tr id="5d2de2ca-102c-4daa-94af-c1781883c08f"><td class="cell-title"><a href="https://www.notion.so/5d2de2ca102c4daa94afc1781883c08f">赣方言</a></td><td class="cell-?|=c">江西省大部分地区</td><td class="cell-eP~T">3.3%</td><td class="cell-muD}">南昌话</td></tr><tr id="ef56a5b8-5a39-4213-bc4a-4f2e8a7118f8"><td class="cell-title"><a href="https://www.notion.so/ef56a5b85a394213bc4a4f2e8a7118f8">客家方言</a></td><td class="cell-?|=c">广东、附件、台湾、江西、广西、湖南、四川等</td><td class="cell-eP~T">3.6%</td><td class="cell-muD}">梅县</td></tr><tr id="a1afaef2-e86e-4235-9599-e68032ccc482"><td class="cell-title"><a href="https://www.notion.so/a1afaef2e86e42359599e68032ccc482">闽方言</a></td><td class="cell-?|=c">福建、海南、潮汕、温州等</td><td class="cell-eP~T">5.7%</td><td class="cell-muD}">横跨六省，代表厦门话</td></tr><tr id="4ad8e578-d5e6-43f7-9fc0-711c70b73792"><td class="cell-title"><a href="https://www.notion.so/4ad8e578d5e643f79fc0711c70b73792">粤方言</a></td><td class="cell-?|=c">广州、香港澳门、广西等</td><td class="cell-eP~T">4%</td><td class="cell-muD}">也称白话</td></tr></tbody></table></div><p id="d6492a25-3173-4f3d-85f9-cfc56699e29e" class="">
+</p><figure id="cea47d85-f9f4-4a21-ae46-ff7f8fdae482" class="image"><a href="%E7%BB%AA%E8%AE%BA%20cea47d85f9f44a21ae46ff7f8fdae482/Untitled.png"><img style="width:1920px" src="%E7%BB%AA%E8%AE%BA%20cea47d85f9f44a21ae46ff7f8fdae482/Untitled.png"/></a></figure><p id="c0db83a3-3fef-44b8-a62d-0f430e5645aa" class="">
+</p></div></p><h3 id="06bb516c-1a06-4893-9ff6-52a7954171e7" class="">四、现代汉语特点</h3><p id="e96999b9-00ff-44af-9246-cad06cfa4df7" class="">
+</p><ul id="57b9a73e-2ea9-4654-8beb-bbdd6a07e9e2" class="toggle"><li><details open=""><summary><strong>语音</strong></summary><ol id="3bbd6a05-2772-4606-bd18-4b1f8c691fdf" class="numbered-list" start="1"><li><strong>没有复辅音。</strong> 如str,因而噪音少。 注意，sh\zh\ch是用两个字母表示一个音素，而不是复辅音</li></ol><ol id="89572972-5053-4561-9ef5-4f2ca4c40092" class="numbered-list" start="2"><li><strong>元音占优势。</strong>汉语复元音比例高。←比如这个字就是。元音是乐音，因此乐音成分比例大。</li></ol><ol id="5684e0e2-0651-4955-a477-8d3ecf103e9b" class="numbered-list" start="3"><li><strong>音节整齐、整洁。</strong>多数音节一个辅音在前，一个单元音或复元音在后，音节结构整洁，音节数目少。</li></ol><ol id="f715bb02-d662-4a4a-9b67-5802ecfdd4c2" class="numbered-list" start="4"><li><strong>有声调。</strong>每个音节都有几个固定的音高形式的声调，表不同的意义。声调可使音节之间界限分明，语言富有高低升降的变化，所以音乐性强。</li></ol></details></li></ul><ul id="b681b8f7-0868-49fe-b153-27ebaff7bf07" class="toggle"><li><details open=""><summary><strong>词汇</strong></summary><ol id="93d8948b-507b-4c44-82d2-dbdd99c23176" class="numbered-list" start="1"><li><strong>单音节语素多，双音节词汇占优势。</strong>*本人注：一个汉字一个音节*。古代单音词更多，现代逐渐双音节话，例如目→眼睛，石→石头。许多多音节词也被缩写成双音节词，例如外交部长→外长，彩色电视机→彩电。新造的词也多为双音节词，如电脑。</li></ol><ol id="89404196-672e-41a6-9595-38a60c8b8fa4" class="numbered-list" start="2"><li><strong>构词广泛运用词根复合法。</strong>使用词根语素构成的合成词最多，如火车、山峰。使用附加法，词缀加词根语素构成的词较少，如袜子、石头</li></ol><ol id="7e4c2ff0-2e62-4f58-9461-fb37047db4c4" class="numbered-list" start="3"><li><strong>同音语素多。</strong>字面意思。</li></ol><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="571e9d7a-4eb6-4275-acc9-4ef91594e015"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">此处不理解语素概念的可参考后面的词汇章节，简单来说，&quot;子&quot;\“头”这种虚词是词缀，即是词缀+词根的模式。</div></figure></details></li></ul><ul id="b7d6777c-2ddb-4ce2-b08a-9a0244f02ecc" class="toggle"><li><details open=""><summary><strong>语法</strong></summary><ol id="ce0eb71b-3a3c-4a13-ba2a-acd4265b7264" class="numbered-list" start="1"><li><strong>汉语表示语法意义的手段不大用形态，主要用语序和虚词。</strong></li></ol><ol id="3a4d0dde-7d2c-401b-ad23-119491a0eb28" class="numbered-list" start="2"><li>词、短语和句子的结构规则基本一致。都有主谓、动宾、补充、偏正、联合五种基本语法结构关系。**参考语法章节**</li></ol><ol id="9c110e42-1906-485c-8d58-3d05f9fedbfa" class="numbered-list" start="3"><li>词类和句法成分关系复杂。英语中，大体是一类词和充当一类句法成分。汉语中一类词可以充当多种成分。汉语中词类和句法成分之间的对应关系不如印欧语系简单，因此汉语的兼类词比较多。</li></ol><ol id="ad27c5a2-441c-45ff-ab9a-8c059d026e1f" class="numbered-list" start="4"><li>量词和语气词十分丰富。</li></ol><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a55fcdc8-e8bd-422c-a0bb-ae1eb80e4b6a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">关于第3点，词类即理解为：名词、副词、量词、形容词、动词等。而语法成分是常说的主谓宾定状补。尝试举一个例子，可能不对。激烈，一词是形容词。有如下句子：A.他喜欢激烈的运动 B.他喜欢激烈地运动。 A句中，激烈充当定语，B句中，激烈充当状语。</div></figure><p id="752a56cd-814f-4e7e-a2e2-8ac955bc07d6" class="">   </p></details></li></ul><p id="5314f9c7-a982-422d-bf8b-3ee32e9d23b2" class="">       此外，汉语的特点还体现在所使用的文字方面，是世界上唯一的几千年一直使用表意体系文字的语言。(表达语法大多不用形态，常被称为孤立语或分析语）</p><p id="d5886f69-b3e3-4251-b306-6e8cdf89e010" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8c4b6462-5239-4593-b0e7-33e83297a87e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">本节一个有趣的点在于，多处都提到了富有乐感这个概念，可以自行体会。</div></figure><h3 id="3ca826b7-7376-415e-969f-5b9aed770f59" class="">五、汉语的地位</h3><p id="2fb5dab4-dcfb-480a-a2cc-3f02a7a95026" class="">本节略，附上一个知乎的关于世界语言分类的专栏链接，以及本书的简略分类，想了解可自行查阅其他资料。</p><figure id="58625777-509b-4c1c-9578-1bca12974a6c"><a href="https://zhuanlan.zhihu.com/p/340153923?utm_source=qq&amp;utm_medium=social&amp;utm_oi=1266348195913027584" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">世界语言谱系及语种全览</div><div class="bookmark-description">世界语言谱系及语种全览 研究语言谱系关系和语言分化规律的语言学分支是历史比较语言学。根据历史比较语言学的研究成果，一般认为世界上的语言按其亲属关系可以分为十几或二十几个语系，其中比较知名的有印欧语系、汉藏语系、乌拉尔语系、阿尔泰语系、闪-含语系、高加索语系、达罗毗荼语系、南岛语系（又称马来-玻利尼西亚语系）、南亚语系等十大语系。 ...</div></div><div class="bookmark-href"><img src="https://static.zhihu.com/static/favicon.ico" class="icon bookmark-icon"/>https://zhuanlan.zhihu.com/p/340153923?utm_source=qq&amp;utm_medium=social&amp;utm_oi=1266348195913027584</div></div><img src="https://pic2.zhimg.com/v2-aea6fe2c4d680754d69d5714c22e55db_xs.jpg?source=172ae18b" class="bookmark-image"/></a></figure><p id="cee699c3-d33a-4851-b2c4-20555de5df49" class="">
+</p><figure id="dbe16200-3e41-46df-825f-95c87958c34e" class="image"><a href="%E7%BB%AA%E8%AE%BA%20cea47d85f9f44a21ae46ff7f8fdae482/Untitled%201.png"><img style="width:838px" src="%E7%BB%AA%E8%AE%BA%20cea47d85f9f44a21ae46ff7f8fdae482/Untitled%201.png"/></a></figure><h2 id="dfcde5c7-edf2-44fb-adc4-b996014211a5" class="">第二节 汉语规范化和推广普通话</h2><h3 id="a4aff1cb-3824-42da-900c-7e3bef757655" class="">一、国家重视语言文字工作</h3><p id="91b602c9-a646-4cce-915a-82e577a5365c" class="">       1955年成立了中国文字改革委员会（文改会），1985年改为国家语言文字工作委员会（国家语委）。</p><h3 id="7db20c47-a447-4f18-a8dd-a3f8dc4107e9" class="">二、现代汉语规范化</h3><blockquote id="d3b3966b-6839-4704-b9e1-ce4324d216a6" class="">     语言的规范化就是确定并推行某一语言应用的统一标准。现代汉语规范化就是确立现代汉民族共同语的明确、一致的标准，消除语音、词汇、语法等方面存在的一些分歧，同时对他的书写符号—文字的形、音、义各个方面制定标准进行规范。</blockquote><p id="292814e7-e551-4840-87d4-05e5121de0cf" class="">        需要结合汉语的使用习惯，对普通话内部所存在的某些分歧和混乱现象进行研究，选择其中的一些读法或者用法推广，确定其中的一种读法或者用法不规范并舍弃。<div class="indented"><ul id="538311b8-0425-4956-b84c-255d6179818d" class="toggle"><li><details open=""><summary><strong>以北京语音为标准音</strong></summary><p id="20f3da22-be07-477b-90be-6946bdfdf2b2" class="">但是这不代表北京话的任何一个语音成分都是标准的，都是普通话成分。北京话中有较多异读、轻声和儿化现象，普通话没有必要全部吸收进来。</p></details></li></ul><ul id="afcb41ef-253b-4e83-9805-5b103652b0ac" class="toggle"><li><details open=""><summary><strong>普通话的词汇以北方词汇为基础</strong></summary><p id="129a991e-131f-452d-b93c-15e085af9c75" class="">同样的，北方话分布范围广，因此也存在分歧。</p></details></li></ul><ul id="e61d0c44-83af-43db-a182-9ae2f66d751b" class="toggle"><li><details open=""><summary><strong>普通话以典范的现代白话文著作为语法规范</strong></summary><p id="eee28a24-aff7-495b-84d9-453f20a991ae" class="">要以优秀的白话文作家、国家正式文件、报刊社论等典型白话文著作的一般用例作为语法规范。</p></details></li></ul><p id="35284303-d457-4b6a-8427-f59b711085d4" class="">
+</p></div></p><h3 id="eb6a08de-1f43-48ea-8c2d-5c7bc3d59d11" class="">三、推广普通话</h3><p id="1f6f26c8-cf48-41ec-a28e-aac85bd27f1e" class="">      普通话是现代汉民族的共同语。推广普通话可以促进人与人的交往，15年的统计，普通话城镇普及率达80%以上。</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="13ff47a3-499c-423d-9fbe-bc48dc0df734"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">这节没写，后续的章节是有提到汉字的简化等是对教育等领域有积极作用的。对幅员辽阔的中国来说，能推广一门共同语，是难能可贵的，也正是这种推广，我们才能走出家门，与人交流。就像要是没有普通话，你一个粤区的去了温州，他们人人都说温州话，噩梦！</div></figure><h2 id="40588c35-2ad8-45a0-9630-3f93858753ae" class="">第三节 现代汉语 课的性质、任务和内容</h2><p id="88975d35-77b1-44ab-9bf2-827e2ca8bef6" class="">略，语音、文字、词汇、语法、修辞。</p></div></article></body></html>
